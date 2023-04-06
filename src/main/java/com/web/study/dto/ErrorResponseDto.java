@@ -38,7 +38,7 @@ public class ErrorResponseDto extends ResponseDto {
 	}
 	
 	public static  ErrorResponseDto of(HttpStatus status, Exception e, Map<String, String> errorData) {
-		return new ErrorResponseDto(status, e,errorData);
+		return new ErrorResponseDto(status, e, errorData);
 	}
 	public static  ErrorResponseDto empty() {
 		return new ErrorResponseDto(null);

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			table {
+				margin: 200px auto;
+				border: 1px solid #121212;
+				border-collapse: collapse;
+				width: 600px;
+			}
+			
+			th, td {
+				border: 1px solid #121212;
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	</head>
+	<body>	
+		<table class="user-table">
+		
+		</table>
+		<script type="text/javascript">
+			window.onload = () => {
+				getUsers();
+			}
+			
+			function getUsers() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/api/users",
+					dataType: "json",
+					success: response => {
+						const userTable = document.querySelector(".user-table");
+						
+						userTable.innerHTML = `
+			                <tr>
+			                    <th>Username</th>
+			                    <th>Password</th>
+			                    <th>Name</th>
+			                    <th>Email</th>
+			                </tr>
+			            `;
+						
+						response.data.forEach(user => {
+						    userTable.innerHTML += `
+						        <tr>
+						            <td>${user.username}</td>
+						            <td>${user.password}</td>
+						            <td>${user.name}</td>
+						            <td>${user.email}</td>
+						            <td><button onclick="deleteUser('${user.userId}')">Delete</button></td>
+						        </tr>
+						    `;
+						});
+					},
+					error: error => {
+						console.log(error);
+					}
+				});
+			}
+			
+			function deleteUser(userId) {
+			    const request = {
+			        type: "delete",
+			        url: `http://localhost:8080/api/user/${userId}`,
+			        success: response => {
+			            alert("User deleted successfully!");
+			            getUsers();
+			        },
+			        error: error => {
+			            alert(error.responseJSON.message);
+			        }
+			    }
+
+			    $.ajax(request);
+			}
+		</script>
+	</body>
+</html>
