@@ -18,6 +18,32 @@ USE `lecture`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `course_mst`
+--
+
+DROP TABLE IF EXISTS `course_mst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `course_mst` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `lecture_id` int NOT NULL,
+  `student_id` varchar(45) NOT NULL,
+  `registe_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `course_mst`
+--
+
+LOCK TABLES `course_mst` WRITE;
+/*!40000 ALTER TABLE `course_mst` DISABLE KEYS */;
+INSERT INTO `course_mst` VALUES (1,1,'1','2023-04-01'),(2,2,'1','2023-04-01'),(3,3,'1','2023-04-01'),(4,4,'1','2023-04-01'),(5,1,'2','2023-04-01'),(6,3,'2','2023-04-01'),(7,5,'2','2023-04-01'),(8,7,'2','2023-04-01'),(9,2,'2','2023-04-01'),(10,9,'2','2023-04-01'),(11,3,'3','2023-04-01'),(12,4,'3','2023-04-01'),(13,5,'3','2023-04-01'),(14,8,'3','2023-04-01'),(15,6,'3','2023-04-01'),(16,5,'4','2023-04-01'),(17,6,'4','2023-04-01'),(18,7,'4','2023-04-01'),(19,8,'4','2023-04-01'),(20,11,'4','2023-04-01'),(21,5,'5','2023-04-01'),(22,7,'5','2023-04-01'),(23,8,'5','2023-04-01'),(24,10,'5','2023-04-01'),(25,9,'6','2023-04-01'),(26,10,'6','2023-04-01'),(27,11,'6','2023-04-01'),(28,4,'7','2023-04-01'),(29,5,'7','2023-04-01'),(30,6,'7','2023-04-01'),(31,1,'8','2023-04-01'),(32,5,'8','2023-04-01'),(33,8,'8','2023-04-01'),(34,9,'8','2023-04-01'),(35,10,'8','2023-04-01'),(36,11,'8','2023-04-01');
+/*!40000 ALTER TABLE `course_mst` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `lecture_mst`
 --
 
@@ -30,7 +56,7 @@ CREATE TABLE `lecture_mst` (
   `lecture_price` int NOT NULL,
   `lecturer_id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,33 +65,8 @@ CREATE TABLE `lecture_mst` (
 
 LOCK TABLES `lecture_mst` WRITE;
 /*!40000 ALTER TABLE `lecture_mst` DISABLE KEYS */;
-INSERT INTO `lecture_mst` VALUES (1,'java기초',50000,1);
+INSERT INTO `lecture_mst` VALUES (1,'스프링 부트 - 핵심 원리와 활용',99000,1),(2,'스프링 MVC 1편 - 백엔드 웹 개발 핵심 기술',99000,1),(3,'실전! 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발',88000,1),(4,'스프링 DB 2편 - 데이터 접근 활용 기술',99000,1),(5,'스프링 DB 1편 - 데이터 접근 핵심 원리',77000,1),(6,'스프링 핵심 원리 - 고급편',121000,1),(7,'토비의 스프링 부투 - 이해와 원리',99000,2),(8,'만들고 비교하며 학습하는 리액트 (React)',55000,3),(9,'[리뉴얼]React로 NodeBird SNS 만들기',88000,4),(10,'[리뉴얼]타입스크립트 올인원 : Part1. 기본문법편',36300,4),(11,'[개정3판] Node.js 교과서 - 기본부터 프로젝트 실습까지',49500,4);
 /*!40000 ALTER TABLE `lecture_mst` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `lecture_registe_mst`
---
-
-DROP TABLE IF EXISTS `lecture_registe_mst`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lecture_registe_mst` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `lecture_id` int NOT NULL,
-  `student_id` varchar(45) NOT NULL,
-  `registe_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lecture_registe_mst`
---
-
-LOCK TABLES `lecture_registe_mst` WRITE;
-/*!40000 ALTER TABLE `lecture_registe_mst` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lecture_registe_mst` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -80,7 +81,7 @@ CREATE TABLE `lecturer_mst` (
   `name` varchar(45) NOT NULL,
   `birth_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,6 +90,7 @@ CREATE TABLE `lecturer_mst` (
 
 LOCK TABLES `lecturer_mst` WRITE;
 /*!40000 ALTER TABLE `lecturer_mst` DISABLE KEYS */;
+INSERT INTO `lecturer_mst` VALUES (1,'김영한','2023-04-10'),(2,'토비','2022-02-10'),(3,'김정한','2022-01-03'),(4,'조현영','2022-01-11');
 /*!40000 ALTER TABLE `lecturer_mst` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +106,7 @@ CREATE TABLE `student_mst` (
   `name` varchar(45) NOT NULL,
   `birth_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,6 +115,7 @@ CREATE TABLE `student_mst` (
 
 LOCK TABLES `student_mst` WRITE;
 /*!40000 ALTER TABLE `student_mst` DISABLE KEYS */;
+INSERT INTO `student_mst` VALUES (1,'김종환','1995-05-03'),(2,'손민재','1997-05-03'),(3,'황창욱','1994-12-03'),(4,'김상현','1998-12-03'),(5,'손지호','1995-07-03'),(6,'고병수','1995-07-03'),(7,'최해혁','1990-03-03'),(8,'강대협','1990-03-03');
 /*!40000 ALTER TABLE `student_mst` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-07 17:39:12
+-- Dump completed on 2023-04-10 17:44:43

@@ -11,13 +11,13 @@ import lombok.ToString;
 @ToString
 public class StudentReqDto {
 	
-	private String studentName;
-	private LocalDate studentBirthDate;
+	private String name;
+	private LocalDate birthDate;
 	
 	public Student toEntity() {
 		return Student.builder()
-				.name(studentName)
-				.birthDate(studentBirthDate)
+				.name(name)
+				.birth_date(birthDate)
 				.build();
 	}
 
