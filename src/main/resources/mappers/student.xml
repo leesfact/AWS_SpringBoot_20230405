@@ -6,15 +6,15 @@
   
   <insert id="saveStudent" parameterType="Student"> 
   	insert into student_mst
-  	values (0, #{name},  #{birth_date})
+  	values (0, #{sdm_name},  #{sdm_birth})
   </insert>
   
   
   <select id="getStudentAll" resultType="Student">
   	select	
-  		id,
-  		name,
-  		birth_date 
+  		sdm_id,
+  		sdm_name,
+  		sdm_birth 
 	from
 		student_mst
 	
@@ -22,13 +22,13 @@
   
   <select id="findStudentById" parameterType="Integer" resultType="Student">
   	select	
-  		id,
-  		name,
-  		birth_date 
+  		sdm_id,
+  		sdm_name,
+  		sdm_birth 
 	from
 		student_mst
 	where
-		id = #{id}
+		sdm_id = #{id}
   
   </select>
 </mapper>

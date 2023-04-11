@@ -25,11 +25,13 @@ public class CourseController {
 		return ResponseEntity.ok().body(ResponseDto.ofDefault());
 	}
 	
-	@GetMapping("/course/all")
-	
+	@GetMapping("/courses")
 	public ResponseEntity<? extends ResponseDto> getCurseAll() {
-		return ResponseEntity.ok().body(DataResponseDto.of(null));
+		return ResponseEntity.ok().body(DataResponseDto.of(courseService.getCourseAll()));
 	}
 	
-
+	@GetMapping("/search/courses")
+	public ResponseEntity<? extends ResponseDto> searchCourse(int type, String searchValue) {
+		return ResponseEntity.ok().body(DataResponseDto.of(courseService.searchCourse(type,searchValue)));
+	}
 }
