@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.web.study.aop.annotation.ReturnDataAspect;
 import com.web.study.dto.request.course.CourseReqDto;
 import com.web.study.dto.response.CourseRespDto;
 import com.web.study.repository.CourseRepository;
@@ -23,7 +24,6 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public void registeCourse(CourseReqDto courseReqDto) {
 		courseRepository.registe(courseReqDto.toEntity());
-		
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class CourseServiceImpl implements CourseService {
 		
 		return dtos;
 	}
-
+	@ReturnDataAspect
 	@Override
 	public List<CourseRespDto> searchCourse(int type, String searchValue) {
 		

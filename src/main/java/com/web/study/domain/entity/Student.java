@@ -16,6 +16,7 @@ import lombok.ToString;
 //@Alias("S1")
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Student {
 	private int sdm_id;
 	private String sdm_name;
